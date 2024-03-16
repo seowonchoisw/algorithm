@@ -32,10 +32,12 @@ cipher는 소문자와 공백으로만 구성되어 있습니다.
 ```javascript
 function solution(cipher, code) {
     var answer = '';
-    
+    // 입력 문자열을 배열로 받아줌
     var cipherArray = cipher.split('');
+    // 출력 문자열에 대한 배열 설정
     var answerArray = [];
-    
+
+    //for문을 돌며 code의 배수만 추출하여 문자열에 더함
     for(i = 0; i < cipher.length; i++){
         if((i+1) % code == 0) answer += cipher[i]
     }
