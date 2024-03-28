@@ -1,0 +1,45 @@
+##### 프로그래머스 코딩테스트 연습 > 연습문제 > JadenCase 문자열 만들기 (Lv.2)
+
+# 문제
+## 문제 설명
+JadenCase란 모든 단어의 첫 문자가 대문자이고, 그 외의 알파벳은 소문자인 문자열입니다. 단, 첫 문자가 알파벳이 아닐 때에는 이어지는 알파벳은 소문자로 쓰면 됩니다. (첫 번째 입출력 예 참고)
+문자열 s가 주어졌을 때, s를 JadenCase로 바꾼 문자열을 리턴하는 함수, solution을 완성해주세요.
+
+## 제한 조건
+- s는 길이 1 이상 200 이하인 문자열입니다.
+- s는 알파벳과 숫자, 공백문자(" ")로 이루어져 있습니다.
+- 숫자는 단어의 첫 문자로만 나옵니다.
+- 숫자로만 이루어진 단어는 없습니다.
+ -공백문자가 연속해서 나올 수 있습니다.
+
+## 입출력 예
+|s	                      |return
+|-------------------------|-------------------------------------
+|"3people unFollowed me"	|"3people Unfollowed Me"
+|"for the last week"	    |"For The Last Week"
+
+# 답안
+```javascript
+function solution(s) {
+    // 최종 반환할 문자열 변수화
+    var answer = '';
+    
+    
+    // 단어 단위로 Split 한 array 변수 선언
+    var wordArray = s.split(' ')
+    // wordArray의 각 단어들에 따라
+    wordArray.forEach((word, index)=>{
+        // 각 단어의 맨 앞글자 대문자로 변환
+        var upper = word.slice(0,1).toUpperCase();
+        // 맨 앞글자가 아닌 것 소문자로 변환
+        var lower = word.slice(1).toLowerCase();
+        // 반환 값에 더해 줌
+        answer += upper + lower
+        
+        // 마지막 글자가 아니라면 공백 더해줌
+        if(index != wordArray.length - 1) answer += " "
+    })
+    
+    return answer;
+}
+```
